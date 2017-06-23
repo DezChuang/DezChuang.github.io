@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          日常｜Hello world - Dez.tw
+          Dez.tw
         
     </title>
 
-    <link rel="canonical" href="https://dezchuang.github.io/2017/03/25/20170325-2256_HelloWorld/">
+    <link rel="canonical" href="https://dezchuang.github.io/archives/2017/04/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('../../../../img/header_img/bg.png')
-            /*post*/
+            background-image: url('/undefined')
+            /*page*/
         
     }
     
@@ -83,16 +83,10 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                        </div>
-                        <h1>日常｜Hello world</h1>
-                        <h2 class="subheading">藉著分享所學的新技術，讓自己能夠真正地從入門到理解。</h2>
-                        <span class="meta">
-                            Posted by Dez Chuang on
-                            2017-03-25
-                        </span>
+                    <div class="site-heading">
+                        <h1>Dez.tw</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Fail fast, fail often, but learn more.</span>
                     </div>
                 
 
@@ -195,167 +189,185 @@
 
 
     <!-- Main Content -->
-    <!-- Modify by Yu-Hsuan Yen -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <p>Hi，我是Dez，今天要來聊聊這個部落格的緣由。好想發一篇類似「我要成為前端工程師」的文章，但鑒於在這個領域還只是個rookie，再過個一兩年增長見識後再來聊聊心路歷程好了，簡言之在去年十月，因為興趣與職涯考量決定開始自學網頁開發。</p>
-<h2 id="前言">前言</h2>
-<p>當時就一直想著「<b>反正先架個部落格吧</b>」，於是用Hexo在Github上粗略地弄了個靜態網頁，半夜還在研究怎麼加上DISQUS留言板，最後不免俗地發了一篇Hello wolrd的文章，隨後就展開了自學之旅。</p>
-<h2 id="決戰十里坡">決戰十里坡</h2>
-<p>網路文章零散，初學者還無法分辨資訊的重要性，所以一開始學習略無組織，從W3C的HTML第一頁開始翻，也在Codecademy學Python，簡單架了個Django網頁，最扯的是，到書局想買本Javascript的書，卻帶了Swift回家…</p>
-<p>最後狠下心買了幾門國外線上課程，賭著不想浪費錢的我，就真的乖乖上起web-dev bootcamp，跟著組織性的課程，才終於開始走上正軌，從最基本的HTML/CSS/Javascript到Node.js/Express/React.js，總算到最近是從前到後瀏覽了一遍網頁開發的皮毛，也稍微看懂了<a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.ssq3szpwq" target="_blank" rel="external">How it feels to learn JavaScript in 2016</a>這篇警世文。</p>
-<h2 id="拿魔杖普攻">拿魔杖普攻</h2>
-<p>跟著講師動手做的範例頂多也只是在練英打，於是最近打算開始開發一些自己的作品，「不如來架個部落格吧」，這個熟悉的聲音又在腦中響起，於是想打鐵趁熱利用Node.js與React.js來打造自己的部落格。</p>
-<p>基於功力還不夠從無到有打造一整個包含後台的部落格 (目前後台程度大約是新增,編輯,刪除,authentication的功能) 。原本打算以去年的Hexo為模板改造，卻發現後台只有hexo-hey可以作為發文的UI，當初在Github上branch也切得太亂，只好忍痛砍掉，幾經搜索後決定使用<b>Ghost</b>與<b>Heroku</b>暫時做為基底。花了一兩天的時間，簡單的完成Heroku的deploy作業，也將git連到Github管理，Database暫時是使用Heroku的Postgres，對於自己架站做部落格還有許多的想法諸如:</p>
-<ul>
-<li>利用React重構前端View，做一個專屬的theme</li>
-<li>調整Node.js設定，個人化自己的後台</li>
-<li>將資料庫連結至Amazon AWS S3</li>
-<li>加入可以新增圖片的功能與後台介面及連結資料庫</li>
-<li>修改authentication設定</li>
-</ul>
-<h2 id="後記">後記</h2>
-<p>BUT，人生就是這個BUT，越是想自己造一台車，就越發現自己這個還沒學那個也需要會，在車子還沒完成前，總是需要先找個可以代步的工具，於是選擇許多開發者使用的Logdown，來做為一個可以分享技術的平台，讓自己可以先專注在學習基本功上，藉著分享所學的新技術，讓自己能夠真正地從入門到理解。</p>
-<p>最後，希望這不會是這個部落格的最後一篇文章拉！</p>
-<h3 id="328更新">3/28更新</h3>
-<p>結果我還是手癢，利用這股衝動，將之前線上教學的YelpCamp重構成blog中…<br>
-<img class="center" src="http://user-image.logdown.io/user/25993/blog/24964/post/1639317/jBqzsvjXRQmrhQp6gjtq_Screen%20Shot%202017-03-28%20at%209.30.06%20PM.png"><br>
-把基本的功能修好，近期就會將半成品deploy到Heroku，再順便把deploy到Heroku的流程當做下一篇文章的主題好了！</p>
-
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
                 
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 归档列表 -->
+            
+            
 
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2017/04/06/20170406-2215_nodjs-blog/" data-toggle="tooltip" data-placement="top" title="心得｜新手架站心得｜Node.js & MongoDB">&larr; Previous Post</a>
-                        </li>
-                    
-                    
+             <!-- 归档列表 -->
+
+            
+            <div class="one-tag-list">
+                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
+                    <span class="tag-text">2017</span>
+                </span>
+                <ul>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    04-06
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2017/04/06/20170406-2215_nodjs-blog/" style="color: #0085a1">
+                        <span>
+                            心得｜新手架站心得｜Node.js & MongoDB
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <li >
+                    03-25
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/2017/03/25/20170325-2256_HelloWorld/" style="color: #0085a1">
+                        <span>
+                            日常｜Hello world
+                        </span>
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </li>
+                
                 </ul>
-
-                <!-- duoshuo Share start -->
-                
-                <!-- 多说 Share end-->
-
-                <!-- 多说评论框 start -->
-                
-                <!-- 多说评论框 end -->
-
-                <!-- disqus comment start -->
-                
-                    <div class="comment">
-                        <div id="disqus_thread" class="disqus-thread"></div>
-                    </div>
-                
-                <!-- disqus comment end -->
             </div>
             
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
 
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#決戰十里坡"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">決戰十里坡</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#拿魔杖普攻"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">拿魔杖普攻</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">後記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#328更新"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">3/28更新</span></a></li></ol></li></ol>
-        
-        </div>
-      </aside>
-    
 
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
         </div>
     </div>
-</article>
+</div>
 
+                <!-- 如果开启评论功能 -->
+                
+            </div>
 
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
 
+        
+            <img id = "avatar_pic" src="/img/latte.jpg" />
+        
 
-<!-- disqus embedded js code start (one page only need to embed once) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "dezchuang";
-    var disqus_identifier = "https://dezchuang.github.io/2017/03/25/20170325-2256_HelloWorld/";
-    var disqus_url = "https://dezchuang.github.io/2017/03/25/20170325-2256_HelloWorld/";
+        
+            <p>Hi, I&#39;m Dez, a Front-End Engineer.</p>
+        
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus embedded js code start end -->
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
 
+            
 
+            
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/DezChuang">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
 
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/DezChuang">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+                <li>
+                    <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2017/04/06/20170406-2215_nodjs-blog/">心得｜新手架站心得｜Node.js &amp; MongoDB</a>
+        </li>
+      
+        <li>
+          <a href="/2017/03/25/20170325-2256_HelloWorld/">日常｜Hello world</a>
+        </li>
+      
+    </ul>
+  </div>
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
 
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
 
 
     <!-- Footer -->
