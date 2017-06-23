@@ -7,29 +7,29 @@
     </url>
     
     <url>
+        <loc>https://dezchuang.github.io/404.html</loc>
+        <lastmod>2017-06-23T15:36:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://dezchuang.github.io/about/</loc>
-        <lastmod>2017-06-23T13:30:23.000Z</lastmod>
+        <lastmod>2017-06-23T15:36:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://dezchuang.github.io/archive/</loc>
-        <lastmod>2017-06-23T13:30:19.000Z</lastmod>
+        <lastmod>2017-06-23T15:36:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://dezchuang.github.io/tags/</loc>
-        <lastmod>2017-06-23T13:30:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://dezchuang.github.io/404.html</loc>
-        <lastmod>2017-06-23T13:30:13.000Z</lastmod>
+        <lastmod>2017-06-23T15:36:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
