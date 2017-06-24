@@ -3,12 +3,17 @@
 
     <sitemap>
         <loc>https://dezchuang.github.io/post-sitemap.xml</loc>
-        <lastmod>2017-06-23T15:54:33.000Z</lastmod>
+        <lastmod>2017-06-24T15:40:23.000Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://dezchuang.github.io/page-sitemap.xml</loc>
-        <lastmod>2017-06-23T15:36:00.000Z</lastmod>
+        <lastmod>2017-06-23T16:01:18.000Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://dezchuang.github.io/tag-sitemap.xml</loc>
+        <lastmod>2017-06-24T05:58:02.000Z</lastmod>
     </sitemap>
 
 </sitemapindex>
