@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="Dez">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          學習｜Huli&#39;s Course#3｜CSS 預處理器｜SASS - Dez.tw
+        
+    </title>
+
+    <link rel="canonical" href="https://dezchuang.github.io/2017/05/02/20170502-1501-huli-course-03/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('../../../../img/header_img/bg.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                            
+                              <a class="tag" href="/tags/#初學" title="初學">初學</a>
+                            
+                              <a class="tag" href="/tags/#Front-End" title="Front-End">Front-End</a>
+                            
+                              <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                            
+                              <a class="tag" href="/tags/#SASS" title="SASS">SASS</a>
+                            
+                        </div>
+                        <h1>學習｜Huli&#39;s Course#3｜CSS 預處理器｜SASS</h1>
+                        <h2 class="subheading">HW3</h2>
+                        <span class="meta">
+                            Posted by Dez Chuang on
+                            2017-05-02
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Dez.tw</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="本章properties">本章Properties</h3>
+<ul>
+<li>使用sass重構css，並使用Prepros編譯成css</li>
+</ul>
+<h3 id="其他properties">其他Properties</h3>
+<ul>
+<li>遮罩重構:</li>
+</ul>
+<figure class="figure-code code"><div class="highlight"><pre>background-image: linear-gradient( rgba(0, 0, 0, .5), rgba(0, 0, 0, .5) ), url(../img/bg-default.jpg);
+</pre></div>
+</figure>
+<ul>
+<li>class 名稱重構:</li>
+</ul>
+<figure class="figure-code code"><div class="highlight"><pre>&lt;div class="stream-item"&gt;
+  &lt;div class="preview"&gt;&lt;/div&gt;
+  &lt;div class="content"&gt;
+      &lt;div class="avatar"&gt;&lt;/div&gt;
+      &lt;div class="stream-text"&gt;
+        &lt;p class="title"&gt;頻道名稱&lt;/p&gt;
+        &lt;p class="streamer"&gt;實況主名字&lt;/p&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</figure>
+<ul>
+<li>利用HW1教的flex重構排版</li>
+<li>增加空白<code>stream-item</code>使每個元素在視窗縮放時對齊</li>
+<li>引入「思源黑體」中文網頁字型</li>
+<li>修復使用flex排版每一個item間距跑掉的問題，但暫時無法RWD</li>
+</ul>
+<h3 id="question-set">Question Set</h3>
+<h4 id="1為什麼我們需要-css-預處理器沒有-css-預處理器的話會怎樣嗎">1.為什麼我們需要 CSS 預處理器？沒有 CSS 預處理器的話會怎樣嗎？</h4>
+<p>使用CSS預處理器能夠在往後處理更複雜的大型專案時，能有效率地偵錯與開發。</p>
+<h4 id="2在那三套裡面你為什麼選擇了現在這一套理由是什麼">2.在那三套裡面，你為什麼選擇了現在這一套？理由是什麼？</h4>
+<p>選擇使用sass，雖然有點想偷懶學看起來比較平易近人的Stylus，但因為<a href="https://github.com/kamranahmedse/developer-roadmap" target="_blank" rel="external">這篇</a>Roadmap推薦學習sass，實際上為什麼還需要慢慢摸索。</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/gonsakon/Learn-Sass-in-90-days" target="_blank" rel="external">Sass &amp; Susy教學手冊</a></li>
+<li><a href="http://ithelp.ithome.com.tw/articles/10159247" target="_blank" rel="external">Sass教學 (25) - 如何透過Sublime text 3 plugin打造Sass開發環境</a></li>
+<li><a href="https://free.com.tw/google-fonts-noto-sans-cjk-webfont/" target="_blank" rel="external">Google Fonts 推出「思源黑體」中文網頁字型，改善網頁文字顯示效果</a></li>
+<li><a href="https://github.com/aszx87410/frontend-intermediate-course/issues/12" target="_blank" rel="external">[作業][值得參考]繳交 hw1 #12 by miau715 </a></li>
+<li><a href="https://github.com/aszx87410/frontend-intermediate-course/issues/53" target="_blank" rel="external">[作業][值得參考]繳交 hw3 #53 by pychiang </a></li>
+<li><a href="http://www.phpxs.com/post/2862/" target="_blank" rel="external">CSS中设置margin:0 auto; 水平居中无效的原因分析</a></li>
+</ul>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ul>
+<li><code>.container</code>無法用<code>margin: 0 auto</code>置中 [Fixed]</li>
+</ul>
+<blockquote>
+<p>原因: <code>.container</code>需指定<code>width</code>為<code>1000px</code>，若指定為<code>72%</code>會有內容元素無法對齊的問題，要做RWD可能還是需使用media query</p>
+</blockquote>
+<ul>
+<li>目前使用Prepros來編譯sass，但似乎有更多有效率地方法如<code>Compass</code>或<code>gulp</code>等等，還需要再學習摸索。</li>
+</ul>
+<h3 id="demo">Demo</h3>
+<p><a href="https://dezchuang.github.io/frontend-intermediate-course/answers/hw3/index.html">https://dezchuang.github.io/frontend-intermediate-course/answers/hw3/index.html</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/05/09/20170509-1501-huli-course-04/" data-toggle="tooltip" data-placement="top" title="學習｜Huli's Course#4｜Ajax 與 API 串接">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/04/27/20170427-1328-02-redux-note/" data-toggle="tooltip" data-placement="top" title="筆記｜Dez.tw重構日誌#2｜Redux筆記">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#本章properties"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">本章Properties</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#其他properties"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">其他Properties</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#question-set"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Question Set</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1為什麼我們需要-css-預處理器沒有-css-預處理器的話會怎樣嗎"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">1.為什麼我們需要 CSS 預處理器？沒有 CSS 預處理器的話會怎樣嗎？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2在那三套裡面你為什麼選擇了現在這一套理由是什麼"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">2.在那三套裡面，你為什麼選擇了現在這一套？理由是什麼？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#references"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">References</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#troubleshooting"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Troubleshooting</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#demo"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Demo</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                          <a class="tag" href="/tags/#初學" title="初學">初學</a>
+                        
+                          <a class="tag" href="/tags/#Front-End" title="Front-End">Front-End</a>
+                        
+                          <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                        
+                          <a class="tag" href="/tags/#SASS" title="SASS">SASS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "dezchuang";
+    var disqus_identifier = "https://dezchuang.github.io/2017/05/02/20170502-1501-huli-course-03/";
+    var disqus_url = "https://dezchuang.github.io/2017/05/02/20170502-1501-huli-course-03/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Dez Chuang 2017
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> |
+                    Redesign by Dez
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://dezchuang.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-101537986-1';
+    //var _gaDomain = 'undefined';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://dezchuang.github.io/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
