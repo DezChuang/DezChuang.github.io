@@ -11,6 +11,8 @@ tags:
     - 心得
 ---
 
+<img class="center" src="https://dl.dropboxusercontent.com/s/pqxrff84h64mo50/huli_course.png">
+
 #### 緣起
 
 記得是三月初某個禮拜五午餐時滑PTT時看到Huli在Soft_Job版提供的[免費教學](https://www.ptt.cc/bbs/Soft_Job/M.1488469002.A.E34.html)，當下覺得好像可以報名試試看，由於從去年底開始就有買了幾門Udemy自學前端技術，一開始原本只是想聊聊新加坡工作的經驗，於是晚上就送了介紹信過去。
@@ -39,7 +41,7 @@ hw4到hw7的部分，正式進入Javascript的主題，難度開始提高了一�
 
 #### 後記
 
-正所謂「師父引進門，修行在個人」，結束了課程後，補強了許多不足的知識，讓我能在之後前端轉職的面試中，有自信地提到自己曾實際操作過hw1到hw10的任何技能。
+正所謂「師父引進門，修行在個人」，結束了課程後，補強了許多不足的知識，讓我能在之後前端轉職的面試中，有自信地提到自己曾實際操作過hw1到hw10的任何技能。也附上所有的[作業](https://github.com/DezChuang/frontend-intermediate-course/tree/master/answers)。
 
 之後也將持續從面試中發現自己不足的地方(Raw Javascript、Browser原理、網路Protocol、網路安全、正規表達式...等等)，慢慢地往成為一個專業前端工程師的道路上，繼續前進。
 

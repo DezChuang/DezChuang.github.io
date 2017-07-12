@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          筆記｜Javascript 正規表達式 - Dez.tw
+          筆記｜Javascript正規表達式#1 - Email驗證 - Dez.tw
         
     </title>
 
-    <link rel="canonical" href="https://dezchuang.github.io/tmp/022_regexp.html">
+    <link rel="canonical" href="https://dezchuang.github.io/2017/07/05/022_regexp_1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/../../../../img/header_img/bg.png')
-            /*page*/
+            background-image: url('../../../../img/header_img/bg.png')
+            /*post*/
         
     }
     
@@ -83,10 +83,30 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>筆記｜Javascript 正規表達式</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Fail fast, fail often, but learn more.</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                            
+                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                            
+                              <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                            
+                              <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                            
+                              <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                            
+                              <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                            
+                              <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                            
+                        </div>
+                        <h1>筆記｜Javascript正規表達式#1 - Email驗證</h1>
+                        <h2 class="subheading">最近刷題實在遇到太多字串處理的題目，也勾起了在面試過程中的各種關於「正規表達式」的跑馬燈，決定來仔細地研究一下，順便整理成比較好懂的筆記。</h2>
+                        <span class="meta">
+                            Posted by Dez Chuang on
+                            2017-07-05
+                        </span>
                     </div>
                 
 
@@ -150,13 +170,6 @@
                         </li>
                         
                     
-
-                        
-                        <li>
-                            <a href="/tmp/022_regexp.html">筆記｜Javascript 正規表達式</a>
-                        </li>
-                        
-                    
                     
                 </ul>
             </div>
@@ -196,184 +209,189 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <h1 id="前言">前言</h1>
-<p>今天刷leetcode時有一題<a href="https://leetcode.com/problems/keyboard-row/#/description" target="_blank" rel="external">500. Keyboard Row</a>，一看到題目給<code>const regex1 = /[qwertyuiop]/g</code>這一串，勾起了在面試過程中的各種關於「正規表達式」的跑馬燈，算一算有快五次或多或少是因為對它不熟而有些遺憾，決定來仔細地研究一下，順便整理成比較好懂的筆記。</p>
-<h1 id="筆記">筆記</h1>
-<h2 id="基本概念">基本概念</h2>
-<h2 id="最難的b與b">最難的<code>\b</code>與<code>\B</code></h2>
-<h2 id="工具">工具</h2>
-<h1 id="後記">後記</h1>
-<h1 id="參考資料">參考資料</h1>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <h1 id="筆記javascript正規表達式1-email驗證">筆記｜Javascript正規表達式#1 - Email驗證</h1>
+<p>首先直接看前端面試的日常考題並試著解題，之後幾篇會是正規表達式的寫法與應用細節。</p>
+<h2 id="直接進範例">直接進範例</h2>
+<p>今天需要驗證一個Email格式，如下面規則：</p>
+<ul>
+<li>中間一定要有一個@</li>
+<li>'@'前後可以是英文, 數字, 符號<code>.</code>或<code>_</code>或<code>-</code></li>
+<li>'@'前後至少1個字，至多64個字</li>
+<li>例: a@aaa.aaa = true; @asdf123 = false; .@. = true</li>
+</ul>
+<h2 id="解題">解題</h2>
+<p>答：<code>/^([\w\.\-]){1,64}\@([\w\.\-\/]){1,64}$/</code></p>
+<p>這題相對真正的email驗證算單純許多，基本上可以這樣拆解：<br>
+<code>/ ^ ([\w\.\-]){1,64} \@ ([\w\.\-\/]){1,64} $ /</code></p>
+<ul>
+<li>最基本的概念是將正規表達式包在<code>/.../</code>中，以<code>^</code>檢查開頭，以<code>$</code>檢查結尾。</li>
+<li>而<code>\@</code>指的是中間一定要有@的規則，加反斜線是因為特殊符號@需要標示。</li>
+<li>可以看到在<code>\@</code>前後都是一樣的<code>([\w\.\-]){1,64}</code>。</li>
+<li>前面小括號括起來的部分為一組規則，<code>[...]</code>表示字串須匹配任何包含於內的字元，其中<code>\w</code>代表的是<code>[a-zA-Z0-9_]</code>，也就是任何字母與數字與<code>_</code>，而<code>\.</code>與<code>\-</code>代表的是符號<code>.</code>與<code>-</code>。</li>
+<li>後面的<code>{1,64}</code>指的是匹配前面規則出現次數為1到64之間。</li>
+</ul>
+<p>更深入的解題可以參考<a href="https://github.com/DezChuang/online-judge-practice/blob/master/Codility/FrontendOA/20170612/03_CheckHTMLFormInfo.js" target="_blank" rel="external">這裡</a>。</p>
+<h2 id="系列文章整理中">系列文章(整理中)</h2>
+<ul>
+<li><a href="#">筆記｜Javascript正規表達式#2 - 基本語法</a></li>
+<li><a href="#">筆記｜Javascript正規表達式#3 - 字串處理與應用</a></li>
+</ul>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://ithelp.ithome.com.tw/articles/10094951" target="_blank" rel="external">[Javascript] Regular Expression – Email 表單驗證</a></li>
+</ul>
 
-                <!-- 如果开启评论功能 -->
                 
-                    <hr>
 
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
                     
+                    
+                        <li class="next">
+                            <a href="/2017/06/28/021_about/" data-toggle="tooltip" data-placement="top" title="自介｜關於我">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-                    
-                    <!-- disqus 评论框 start -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
                     <div class="comment">
                         <div id="disqus_thread" class="disqus-thread"></div>
                     </div>
-                    <!-- disqus 评论框 end -->
-                    
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#筆記javascript正規表達式1-email驗證"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">筆記｜Javascript正規表達式#1 - Email驗證</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#直接進範例"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">直接進範例</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#解題"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解題</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系列文章整理中"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">系列文章(整理中)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">參考資料</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
 
-                    
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-                    
-                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES * * */
-                        var disqus_shortname = "dezchuang";
-                        var disqus_identifier = "https://dezchuang.github.io/tmp/022_regexp.html";
-                        var disqus_url = "https://dezchuang.github.io/tmp/022_regexp.html";
-
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端" title="前端">前端</a>
                         
-                    </script>
-                    <!-- disqus 公共JS代码 end -->
-                    
+                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                        
+                          <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                        
+                          <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                        
+                          <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                        
+                          <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                        
+                          <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
-
-        
-            <img id = "avatar_pic" src="/img/latte.jpg" />
-        
-
-        
-            <p>Hi, I&#39;m Dez, a Front-End Engineer.</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-                <li>
-                    <a target="_blank" href="https://www.facebook.com/DezChuang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/DezChuang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-                <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-        </ul>
+        </div>
     </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2017/06/28/021_about/">自介｜關於我</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/19/020_huli-course-feedback/">心得｜Huli&#39;s Course｜緣起與收穫</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/17/019_interview-coding/">筆記｜前端面試考題｜寫出自己能解釋的程式碼</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/17/018_huli-course-10/">學習｜Huli&#39;s Course#10｜ESLint與Standard</a>
-        </li>
-      
-        <li>
-          <a href="/2017/06/12/017_interview-json/">筆記｜前端面試考題｜確認JSON是否有值</a>
-        </li>
-      
-    </ul>
-  </div>
+</article>
 
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
 
-        <hr>
-    
-        <!-- Categories -->
 
-        <hr>
-    
-</div>
 
-        
-    </div>
-</div>
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "dezchuang";
+    var disqus_identifier = "https://dezchuang.github.io/2017/07/05/022_regexp_1/";
+    var disqus_url = "https://dezchuang.github.io/2017/07/05/022_regexp_1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
