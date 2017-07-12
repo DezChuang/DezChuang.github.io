@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="Dez">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          筆記｜Javascript正規表達式#2 - 基本語法 - Dez.tw
+        
+    </title>
+
+    <link rel="canonical" href="https://dezchuang.github.io/2017/07/12/023_regexp_2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('../../../../img/header_img/bg.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                            
+                              <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                            
+                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                            
+                              <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                            
+                              <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                            
+                              <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                            
+                              <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                            
+                        </div>
+                        <h1>筆記｜Javascript正規表達式#2 - 基本語法</h1>
+                        <h2 class="subheading">筆記所有常用的正規表達式符號說明，理解後用自己的方式整理下來。</h2>
+                        <span class="meta">
+                            Posted by Dez Chuang on
+                            2017-07-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Dez.tw</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="創建正規表達式">創建正規表達式</h2>
+<p>有兩種方法，分別應用在不同的使用情境：</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>var re = /ab+c/;</code></td>
+<td>一般最常用的方法，將正規表達式寫在包在<code>/.../</code>中，適用於正規表達式為定值時，可獲得較佳效能。</td>
+</tr>
+<tr>
+<td><code>var re = new RegExp(&quot;ab+c&quot;);</code></td>
+<td>呼叫RegExp物件建構子函數即時編譯正規表達式，適用於事先未知匹配模式或將從其他地方取得值。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="字元類別-character-classes">字元類別 (Character Classes)</h2>
+<p>字元類別匹配任何包含於<code>[...]</code>內的字元：</p>
+<table>
+<thead>
+<tr>
+<th>正規式</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/[dez]/</code></td>
+<td>匹配d、e、z字元</td>
+</tr>
+<tr>
+<td><code>/[0-9]/</code></td>
+<td>匹配0到9之間所有數字</td>
+</tr>
+<tr>
+<td><code>/[^0-9]/</code></td>
+<td>匹配0到9以外的字元(<code>^</code>寫在pattern中間時表示否定)</td>
+</tr>
+<tr>
+<td><code>/[a-z]/</code></td>
+<td>匹配a到z之間所有字母</td>
+</tr>
+<tr>
+<td><code>/[a-zA-Z0-9]/</code></td>
+<td>匹配所有大小寫字母與數字0到9</td>
+</tr>
+</tbody>
+</table>
+<p>其他常用的特定表示字元類別：</p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>除了newline與end of line外所有字元</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>意同<code>[a-zA-Z0-9_]</code>，任一字母、數字、與<code>_</code></td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>意同<code>[^a-zA-Z0-9_]</code>，<code>\w</code>以外任何字元</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>意同<code>[0-9]</code></td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>意同<code>[^0-9]</code></td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>任何Unicode空白字元，包含<code>\t</code>、<code>\v</code>等</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>任何非Unicode空白字元</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="重複次數-repetition">重複次數 (Repetition)</h2>
+<p>使用在需限制一定範圍的次數時，使用以下語法能節省一直重複寫同一個字元類別的麻煩：</p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{n}</code></td>
+<td>匹配前一個規則的字元剛好n次</td>
+</tr>
+<tr>
+<td><code>{n,}</code></td>
+<td>匹配前一個規則的字元n次以上</td>
+</tr>
+<tr>
+<td><code>{n, m}</code></td>
+<td>匹配前一個規則的字元在n到m之間</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>意同<code>{1, }</code>，一個以上</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>意同<code>{0, }</code>，0個以上</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>意同<code>{0,1}</code>，0個或1個</td>
+</tr>
+</tbody>
+</table>
+<p>另外還有一個進階的寫法是Non-greedy Repetition，將重複次數後面再加一個問號如<code>+?</code>, <code>*?</code>, <code>??</code>，由於不常見寫在後面的<a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/#%E8%A3%9C%E5%85%85">補充</a>。</p>
+<hr>
+<h2 id="旗標-flag">旗標 (flag)</h2>
+<p>正規表達式有幾個選擇性的flag可以使用，寫在<code>/.../</code>後面，例如<code>/xyz[0-9]/g</code>，以下列出常用的，可以個別或搭配使用：</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>g</td>
+<td>Global search，比對字串中所有符合的配對，否則只找一個，見下例。</td>
+</tr>
+<tr>
+<td>i</td>
+<td>case-Insensitive search，規則不區分大小寫。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>Multi-line search，多行比對，<code>^</code>比對每行開頭，<code>$</code>比對每行結尾。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"xyz123xyz456"</span>;</div><div class="line">str.match(<span class="regexp">/xyz[0-9]/</span>); <span class="comment">// 符合 xyz1</span></div><div class="line">str.match(<span class="regexp">/xyz[0-9]/g</span>); <span class="comment">// 符合 xyz1 和 xyz4</span></div></pre></td></tr></table></figure>
+<hr>
+<h2 id="錨點元字符-anchoring-metacharacters">錨點元字符 (Anchoring Metacharacters)</h2>
+<p>中文照翻，我也不知道什麼是元字符，不過錨點就比較好理解，使用錨點符號可以決定匹配規則必須在特定的位置，簡單地說就是「設定規則的邊界」：</p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明及範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>在字串開頭，或m旗標狀態下每行開頭</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>在字串結尾，或m旗標狀態下每行結尾</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>比對word(<code>\w</code>)邊界，詳細見<a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/#%E8%A3%9C%E5%85%85">補充</a></td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>比對non-word(<code>\W</code>)邊界，詳細見<a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/#%E8%A3%9C%E5%85%85">補充</a></td>
+</tr>
+<tr>
+<td><code>x(?=y)</code></td>
+<td>x符合的條件要加上x之後必須接y，詳細見<a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/#%E8%A3%9C%E5%85%85">補充</a></td>
+</tr>
+<tr>
+<td><code>x(?!y)</code></td>
+<td>x符合的條件要加上x之後不可接y，詳細見<a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/#%E8%A3%9C%E5%85%85">補充</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="分組">分組</h2>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明及範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(x)</code></td>
+<td>找出x，並且記憶此匹配到結果中</td>
+</tr>
+<tr>
+<td><code>(?:x)</code></td>
+<td>找出x，但此匹配不會被記憶到結果中</td>
+</tr>
+</tbody>
+</table>
+<p><code>(x)</code>就像四則運算中使用的括號，括起來的部分為同一組，例如<code>/(dog|cat){2}/</code>用來匹配出現兩次<code>dog</code>或<code>cat</code>的字串，利用括號也能提高可讀性。</p>
+<p>而<code>(?:x)</code>的用途就是只是判斷是否符合x條件，但不會記住判斷的字，例如判斷電話號碼與分機：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str=<span class="string">"12345678#123"</span>;</div><div class="line"><span class="keyword">var</span> result = <span class="regexp">/(\d+)(?:#)(\d+)/</span>.exec(str);</div><div class="line"><span class="built_in">console</span>.log(result[<span class="number">1</span>]); <span class="comment">// 123445678</span></div><div class="line"><span class="built_in">console</span>.log(result[<span class="number">2</span>]); <span class="comment">// 123</span></div></pre></td></tr></table></figure>
+<hr>
+<h2 id="其他">其他</h2>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明及範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\</code></td>
+<td>有特殊意義的符號如果要匹配自己必須加上反斜線。</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>or 運算子，<code>x|y</code>指匹配x或y都可以。</td>
+</tr>
+</tbody>
+</table>
+<p>剩下其他還有許多比較少見的符號，之後有碰到再補充吧。</p>
+<hr>
+<h2 id="補充">補充</h2>
+<h3 id="非貪進重複-non-greedy-repetition">非貪進重複 (Non-greedy Repetition)</h3>
+<p>看起來不是很常用的寫法，不過因為跟重複次數有關，補充進來，直接參考以下<a href="https://stackoverflow.com/questions/3075130/what-is-the-difference-between-and-regular-expressions/3075150#3075150" target="_blank" rel="external">例子</a></p>
+<p>有兩正規表達式<code>A.*Z</code>與<code>A.*?Z</code>，給予一個字串<code>eeeAiiZuuuuAoooZeeee</code>。匹配的結果如下：</p>
+<ul>
+<li><code>A.*Z</code>得到結果<code>AiiZuuuuAoooZ</code>。<a href="http://www.rubular.com/r/qM00Ovbvdr" target="_blank" rel="external">Demo</a></li>
+<li><code>A.*?Z</code>得到結果<code>AiiZ</code>與<code>AoooZ</code>。<a href="http://www.rubular.com/r/Dv168cXzeX" target="_blank" rel="external">Demo</a></li>
+</ul>
+<p>一般的<code>.*</code>會讓<code>.</code>一直無限制地去找字元，找到字尾時<code>...Zeeee</code>發現沒有匹配到Z，此時就會一個一個往回比對，直到找到Z為止，所以得到結果為<code>AiiZuuuuAoooZ</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">eeeAiiZuuuuAoooZeeee</div><div class="line">   \_______________/</div><div class="line">    A.* matched, Z can&apos;t match</div><div class="line">    </div><div class="line">eeeAiiZuuuuAoooZeeee</div><div class="line">   \______________/</div><div class="line">    A.* matched, Z still can&apos;t match</div><div class="line">    </div><div class="line">eeeAiiZuuuuAoooZeeee</div><div class="line">   \__________/</div><div class="line">    A.* matched, Z can now match</div><div class="line">    </div><div class="line">eeeAiiZuuuuAoooZeeee</div><div class="line">   \___________/</div><div class="line">    A.*Z matched</div></pre></td></tr></table></figure>
+<p>而非貪進的<code>.*?</code>找法是，會先匹配盡可能少的重複次數<code>.</code>，但如果找不到匹配的字元才會再往回找，也稱為Reluctant(不情願的) Repetition。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eeeAiiZuuuuAoooZeeee</div><div class="line">   \__/r   \___/r      r = reluctant(non-greedy, lazy)</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="b與b的差別-參考"><code>\b</code>與<code>\B</code>的差別 (<a href="http://www.rexegg.com/regex-boundaries.html#wordboundary" target="_blank" rel="external">參考</a>)</h3>
+<p>簡單來說可以這樣理解：<strong>有<code>\b</code>的地方就是不能出現word，有<code>\B</code>的地方就是一定要有word</strong>(注意這邊的word指的是<code>\w</code>，也就是<code>[a-zA-Z0-9_]</code>)。</p>
+<p>這個b或B指的是boundary(邊界)，分別代表的是Word Boundary與Not-a-word-boundary，用途就如其名是用來設定word的邊界，直接看例子：</p>
+<p>今天有以下字串：</p>
+<ol>
+<li>&quot;a black <code>cat</code>&quot;</li>
+<li>“<code>cat</code>atonic”</li>
+<li>“tom<code>cat</code>”</li>
+<li>“certifi<code>cat</code>e”</li>
+<li>“_<code>cat</code>”</li>
+<li>“<code>cat</code>25”</li>
+</ol>
+<p>若規則是<code>\bcat\b</code>，指的是cat的前後都不能有[a-zA-Z0-9_]出現，故只有1符合，因為2、4、6後面有word，而3、4、5前面有word。同理可推若規則是<code>\bcat</code>，則有1、2、6符合。若規則是<code>cat\b</code>，則有1、3、5符合。</p>
+<p>而如果看懂<code>\b</code>後，<code>\B</code>其實就不難了，因為他判斷的邊界就是與<code>\b</code>相反，看起來很雞肋，但有時候的確會派上用場，例如之前面試時碰到<a href="https://dezchuang.github.io/2017/06/17/019_interview-coding/">幫數字加逗號的例子</a>。</p>
+<p>所以續上例，<code>\Bcat\B</code>，指的是cat的前後都需要有[a-zA-Z0-9_]出現，故只有4符合，因為1、3、5後面沒有word，而2、6前面沒有word。同理可推若規則是<code>\Bcat</code>，就是cat前要有word，則有3、4、5符合。若規則是<code>cat\B</code>，則有2、4、6符合。</p>
+<p>更詳細的說明與定義可以參考標題連結。</p>
+<hr>
+<h3 id="與的差別-參考"><code>?=</code>與<code>?!</code>的差別 (<a href="http://syunguo.blogspot.tw/2013/04/jsregular-expressions.html" target="_blank" rel="external">參考</a>)</h3>
+<p>這個看例子還蠻好懂的：</p>
+<h4 id="">?=</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"Hello Wendy"</span>;</div><div class="line">str.replace(<span class="regexp">/e(?=l)/gi</span>,<span class="string">'x'</span>); <span class="comment">// Hxllo Wendy</span></div></pre></td></tr></table></figure>
+<p><code>e(?=l)</code>就是需要找e後面有接l的，所以只有Hello的e被換掉。</p>
+<h4 id="">?!</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"Hello Wendy"</span>;</div><div class="line">str.replace(<span class="regexp">/e(?!l)/gi</span>,<span class="string">'x'</span>); <span class="comment">// Hello Wxndy</span></div></pre></td></tr></table></figure>
+<p><code>e(?!l)</code>就是需要找e後面沒有接l的，所以只有Wendy的e被換掉。</p>
+<hr>
+<h2 id="系列文章">系列文章</h2>
+<ul>
+<li><a href="https://dezchuang.github.io/2017/07/05/022_regexp_1/">筆記｜Javascript正規表達式#1 - Email驗證</a></li>
+<li><a href="#">筆記｜Javascript正規表達式#3 - 字串處理與應用</a></li>
+</ul>
+<hr>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li>統一整理在<a href="#">下一篇</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/07/05/022_regexp_1/" data-toggle="tooltip" data-placement="top" title="筆記｜Javascript正規表達式#1 - Email驗證">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#創建正規表達式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">創建正規表達式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字元類別-character-classes"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">字元類別 (Character Classes)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重複次數-repetition"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">重複次數 (Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#旗標-flag"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">旗標 (flag)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#錨點元字符-anchoring-metacharacters"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">錨點元字符 (Anchoring Metacharacters)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分組"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">分組</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#其他"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">其他</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#補充"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">補充</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#非貪進重複-non-greedy-repetition"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">非貪進重複 (Non-greedy Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#b與b的差別-參考"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">\b與\B的差別 (參考)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#與的差別-參考"><span class="toc-nav-number">8.3.</span> <span class="toc-nav-text">?=與?!的差別 (參考)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">8.3.1.</span> <span class="toc-nav-text">?=</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">8.3.2.</span> <span class="toc-nav-text">?!</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系列文章"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">系列文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">參考資料</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                          <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                        
+                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                        
+                          <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                        
+                          <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                        
+                          <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                        
+                          <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "dezchuang";
+    var disqus_identifier = "https://dezchuang.github.io/2017/07/12/023_regexp_2/";
+    var disqus_url = "https://dezchuang.github.io/2017/07/12/023_regexp_2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Dez Chuang 2017
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> |
+                    Redesign by Dez
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://dezchuang.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-101537986-1';
+    //var _gaDomain = 'undefined';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://dezchuang.github.io/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
