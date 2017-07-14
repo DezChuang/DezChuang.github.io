@@ -102,7 +102,7 @@
                             
                         </div>
                         <h1>筆記｜Javascript正規表達式#2 - 基本語法</h1>
-                        <h2 class="subheading">筆記所有常用的正規表達式符號說明，理解後用自己的方式整理下來。</h2>
+                        <h2 class="subheading">筆記在javascript中常用的正規表達式語法，理解後用自己的方式整理下來。</h2>
                         <span class="meta">
                             Posted by Dez Chuang on
                             2017-07-12
@@ -159,14 +159,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,7 +222,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="創建正規表達式">創建正規表達式</h2>
+                <h2 id="前言">前言</h2>
+<p>這一篇會筆記在javascript中常用的正規表達式語法，理解後用自己的方式整理下來。新手入門，如果有任何錯誤歡迎留言指正。</p>
+<hr>
+<h2 id="創建正規表達式">創建正規表達式</h2>
 <p>有兩種方法，分別應用在不同的使用情境：</p>
 <table>
 <thead>
@@ -502,12 +505,12 @@
 <h2 id="系列文章">系列文章</h2>
 <ul>
 <li><a href="https://dezchuang.github.io/2017/07/05/022_regexp_1/">筆記｜Javascript正規表達式#1 - Email驗證</a></li>
-<li><a href="#">筆記｜Javascript正規表達式#3 - 字串處理與應用</a></li>
+<li><a href="https://dezchuang.github.io/2017/07/14/024_regexp_3/">筆記｜Javascript正規表達式#3 - 字串處理與應用</a></li>
 </ul>
 <hr>
 <h2 id="參考資料">參考資料</h2>
 <ul>
-<li>統一整理在<a href="#">下一篇</a></li>
+<li>統一整理在下一篇：<a href="https://dezchuang.github.io/2017/07/14/024_regexp_3/">筆記｜Javascript正規表達式#3 - 字串處理與應用</a></li>
 </ul>
 
                 
@@ -548,7 +551,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#創建正規表達式"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">創建正規表達式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字元類別-character-classes"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">字元類別 (Character Classes)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重複次數-repetition"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">重複次數 (Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#旗標-flag"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">旗標 (flag)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#錨點元字符-anchoring-metacharacters"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">錨點元字符 (Anchoring Metacharacters)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分組"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">分組</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#其他"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">其他</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#補充"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">補充</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#非貪進重複-non-greedy-repetition"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">非貪進重複 (Non-greedy Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#b與b的差別-參考"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">\b與\B的差別 (參考)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#與的差別-參考"><span class="toc-nav-number">8.3.</span> <span class="toc-nav-text">?=與?!的差別 (參考)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">8.3.1.</span> <span class="toc-nav-text">?=</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">8.3.2.</span> <span class="toc-nav-text">?!</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系列文章"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">系列文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">參考資料</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#創建正規表達式"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">創建正規表達式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字元類別-character-classes"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">字元類別 (Character Classes)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#重複次數-repetition"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">重複次數 (Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#旗標-flag"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">旗標 (flag)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#錨點元字符-anchoring-metacharacters"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">錨點元字符 (Anchoring Metacharacters)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分組"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">分組</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#其他"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">其他</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#補充"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">補充</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#非貪進重複-non-greedy-repetition"><span class="toc-nav-number">9.1.</span> <span class="toc-nav-text">非貪進重複 (Non-greedy Repetition)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#b與b的差別-參考"><span class="toc-nav-number">9.2.</span> <span class="toc-nav-text">\b與\B的差別 (參考)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#與的差別-參考"><span class="toc-nav-number">9.3.</span> <span class="toc-nav-text">?=與?!的差別 (參考)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">9.3.1.</span> <span class="toc-nav-text">?=</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#"><span class="toc-nav-number">9.3.2.</span> <span class="toc-nav-text">?!</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系列文章"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">系列文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">參考資料</span></a></li></ol>
         
         </div>
       </aside>

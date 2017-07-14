@@ -8,7 +8,7 @@
 
     <url>
         <loc>https://dezchuang.github.io/2017/07/12/023_regexp_2/</loc>
-        <lastmod>2017-07-12T10:12:55.000Z</lastmod>
+        <lastmod>2017-07-14T14:39:56.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>https://dezchuang.github.io/2017/07/05/022_regexp_1/</loc>
-        <lastmod>2017-07-11T04:58:22.000Z</lastmod>
+        <lastmod>2017-07-14T05:41:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://dezchuang.github.io/2017/06/17/019_interview-coding/</loc>
+        <lastmod>2017-07-14T05:08:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -47,7 +55,7 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/2017/04/16/005_huli-course-01/</loc>
+        <loc>https://dezchuang.github.io/2017/04/12/004_react-reference/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -55,7 +63,7 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/2017/04/12/004_react-reference/</loc>
+        <loc>https://dezchuang.github.io/2017/04/16/005_huli-course-01/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -119,14 +127,6 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/2017/06/04/013_huli-course-08/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://dezchuang.github.io/2017/06/09/014_event-bubble/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -135,7 +135,23 @@
     </url>
 
     <url>
+        <loc>https://dezchuang.github.io/2017/06/04/013_huli-course-08/</loc>
+        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://dezchuang.github.io/2017/06/11/015_huli-course-09/</loc>
+        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://dezchuang.github.io/2017/06/12/017_interview-json/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -159,15 +175,7 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/2017/06/12/017_interview-json/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://dezchuang.github.io/2017/06/17/019_interview-coding/</loc>
+        <loc>https://dezchuang.github.io/2017/06/19/020_huli-course-feedback/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -176,14 +184,6 @@
 
     <url>
         <loc>https://dezchuang.github.io/2017/06/28/021_about/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://dezchuang.github.io/2017/06/19/020_huli-course-feedback/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
