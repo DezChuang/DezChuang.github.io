@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="Dez">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          筆記｜Javascript正規表達式#3 - 字串處理與應用 - Dez.tw
+        
+    </title>
+
+    <link rel="canonical" href="https://dezchuang.github.io/2017/07/17/024_regexp_3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('../../../../img/header_img/bg.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                            
+                              <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                            
+                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                            
+                              <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                            
+                              <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                            
+                              <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                            
+                              <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                            
+                        </div>
+                        <h1>筆記｜Javascript正規表達式#3 - 字串處理與應用</h1>
+                        <h2 class="subheading">字串處理在刷題時幾乎是常常碰到，可見是個相當重要的基本功，這篇文章筆記一些常用的method。</h2>
+                        <span class="meta">
+                            Posted by Dez Chuang on
+                            2017-07-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Dez.tw</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="前言">前言</h2>
+<p>學會了正規表達式的寫法後，在Javascript中的應用，可以用在字串物件與RegExp物件上。字串處理在刷題時幾乎是常常碰到，是個相當重要的基本功。這篇文章筆記一些常用的method，網路上也有許多相當仔細的教學，就列在最後的參考資料。</p>
+<hr>
+<h2 id="字串處理-method">字串處理 method</h2>
+<h3 id="search"><code>search</code></h3>
+<p>語法：<code>str.search(regexp)</code></p>
+<p>當你想確認某個pattern是否在某個字串中匹配，並且希望知道在字串中匹配的位置索引(index)，就可以使用search這個method。如果有匹配回傳值會是第一個匹配中的<code>index</code>，沒找到時回傳<code>-1</code>。另外，search會忽略<code>g</code>旗標，只搜尋第一個匹配的索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"aabbcc"</span>.search(<span class="regexp">/b/</span>));  <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"aabbcc"</span>.search(<span class="regexp">/b/g</span>)); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"aaddcc"</span>.search(<span class="regexp">/b/</span>));  <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search" target="_blank" rel="external">MDN - String.prototype.search()</a></p>
+<hr>
+<h3 id="replace"><code>replace</code></h3>
+<p>語法：<code>str.replace(regexp|substr, newSubstr|function)</code></p>
+<p>replace會回傳一個新字串，一個被用replacement取代匹配的pattern的新字串。</p>
+<p>第一個參數是pattern，可以是RegExp或子字串，如果使用子字串當參數，就只會取代第一次匹配的地方。(<a href="http://repeat.tw/blog/post/25800355" target="_blank" rel="external">參考</a>)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"(texts) (texts)"</span>;</div><div class="line"><span class="built_in">console</span>.log(s.replace(<span class="string">"(texts)"</span>, <span class="string">"TESTS"</span>)); <span class="comment">// TESTS (texts)</span></div><div class="line"><span class="keyword">var</span> s = <span class="string">"(texts) (texts)"</span>;</div><div class="line"><span class="built_in">console</span>.log(s.replace(<span class="regexp">/\(texts\)/ig</span>, <span class="string">"TESTS"</span>)); <span class="comment">// TESTS TESTS</span></div></pre></td></tr></table></figure>
+<p>第二個參數是replacement，就是你想用來取代的字串，可以是子字串或function。其中子字串除了是一般字串外，也可以是一些特別的寫法(如<code>$$</code>、<code>$&amp;</code>、<code>$n</code>)，可以參考MDN的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_string_as_a_parameter" target="_blank" rel="external">說明</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">"abcdefghi"</span>;</div><div class="line"><span class="built_in">console</span>.log(s.replace(<span class="regexp">/(\w)(\w)(\w)/g</span>, <span class="string">'$3$2$1'</span>));  <span class="comment">// cbafedihg</span></div></pre></td></tr></table></figure>
+<p>從上例可以看到<code>$n</code>的用法，就是正規式第n個括號的參考。上面的例子pattern是每三個字元一組，replacement是依照正規式三個括號的規則取代，這邊的效果就是將每三個字元反序排列，所以abc變cba，def變fed，ghi變ihg。</p>
+<p>而function的話，需注意回傳值將會被用來當成replacement的字串，等於是動態決定replacement。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str</span>) </span>&#123; <span class="keyword">return</span> str; &#125;</div><div class="line"><span class="string">"Merry Xmas"</span>.replace(<span class="regexp">/xmas/i</span>, foo(<span class="string">"Christmas"</span>));  <span class="comment">// "Merry Christmas"</span></div><div class="line"><span class="string">"Merry Xmas"</span>.replace(<span class="regexp">/xmas/i</span>, foo(<span class="string">"XMAS"</span>));  <span class="comment">// "Merry XMAS"</span></div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="external">MDN - String.prototype.replace()</a></p>
+<hr>
+<h3 id="match"><code>match</code></h3>
+<p>語法：<code>str.match(regexp)</code></p>
+<p>將匹配的字串變成陣列回傳，如果傳入的正規式含<code>g</code>旗標，則會回傳一個array，一個包含所有匹配的子字串的陣列，如果沒有任何匹配，則回傳null。如果傳入的正規式不含<code>g</code>旗標，會找到第一個匹配字串就結束。如果未傳入任何值，則回傳<code>[&quot;&quot;]</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span>;</div><div class="line"><span class="keyword">var</span> regexp = <span class="regexp">/[A-E]/gi</span>;</div><div class="line"><span class="keyword">var</span> matches_array = str.match(regexp);</div><div class="line"><span class="built_in">console</span>.log(matches_array);</div><div class="line"><span class="comment">// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span>;</div><div class="line"><span class="keyword">var</span> regexp = <span class="regexp">/[A-E]/g</span>;</div><div class="line"><span class="keyword">var</span> matches_array = str.match(regexp);</div><div class="line"><span class="built_in">console</span>.log(matches_array);</div><div class="line"><span class="comment">// ['A']</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"Nothing will come of nothing."</span>;</div><div class="line">str.match();   <span class="comment">// returns [""]</span></div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="external">MDN - String.prototype.match()</a></p>
+<hr>
+<h3 id="split"><code>split</code></h3>
+<p>語法：<code>str.split([separator[, limit]])</code></p>
+<p>將字串物件依照RegExp匹配的規則來分割，並將結果以array型式回傳。兩個參數都是可選擇性的，如果沒傳入任何參數，則會將原字串放入陣列中回傳：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello world"</span>.split(); <span class="comment">// ["hello world"]</span></div></pre></td></tr></table></figure>
+<p>第一個參數可以是字串或RegExp，當作切割的規則：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var names = &apos;Harry Trump ;Fred Barney; Helen Rigby&apos;;</div><div class="line">var re = /\s*;\s*/;</div><div class="line">var nameList = names.split(re);</div><div class="line">console.log(nameList); // [ &quot;Harry Trump&quot;, &quot;Fred Barney&quot;, &quot;Helen Rigby&quot;]</div></pre></td></tr></table></figure>
+<p>第二個參數可以定一個數字來限制只切幾次：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myString = <span class="string">'Hello World. How are you doing?'</span>;</div><div class="line"><span class="keyword">var</span> splits = myString.split(<span class="string">' '</span>, <span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(splits); <span class="comment">// ["Hello", "World.", "How"]</span></div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split" target="_blank" rel="external">MDN - String.prototype.split()</a></p>
+<hr>
+<h2 id="regexp-method">RegExp method</h2>
+<h3 id="exec"><code>exec</code></h3>
+<p>語法：<code>regexObj.exec(str)</code></p>
+<p>如果目標是根據正規式進行匹配，並需要取得結果，可以用exec這個method，他會執行搜尋並回傳一個結果陣列。</p>
+<p>性質上跟<code>str.match</code>有點像，但就算有<code>g</code>旗標，每次仍只會回傳單一結果陣列，但你可以連續地尋找下一個匹配，並且會將下一個要比較的字元記錄在<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex" target="_blank" rel="external">lastIndex</a>中，是RegExp物件的一個property。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myRe = <span class="regexp">/ab*/g</span>;</div><div class="line"><span class="keyword">var</span> str = <span class="string">'abbcdefabh'</span>;</div><div class="line"><span class="keyword">var</span> myArray;</div><div class="line"><span class="keyword">while</span> ((myArray = myRe.exec(str)) !== <span class="literal">null</span>) &#123;</div><div class="line">  <span class="keyword">var</span> msg = <span class="string">'Found '</span> + myArray[<span class="number">0</span>] + <span class="string">'. '</span>;</div><div class="line">  msg += <span class="string">'Next match starts at '</span> + myRe.lastIndex;</div><div class="line">  <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Found abb. Next match starts at 3</div><div class="line">Found ab. Next match starts at 9</div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec" target="_blank" rel="external">MDN - RegExp.prototype.exec()</a></p>
+<hr>
+<h3 id="test"><code>test</code></h3>
+<p>語法：<code>regexObj.test(str)</code></p>
+<p>如果目標是判斷true或false，可以使用test這個method，或是前面的<code>str.search</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'hello world!'</span>;</div><div class="line"><span class="keyword">var</span> result = <span class="regexp">/^hello/</span>.test(str);</div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="external">MDN - RegExp.prototype.test()</a></p>
+<hr>
+<h2 id="工具">工具</h2>
+<ul>
+<li>線上測試RegExp網站： <a href="https://regex101.com/" target="_blank" rel="external">Online Regex tester - regex101</a></li>
+<li>視覺化呈現RegExp效果網站：<a href="http://www.regexper.com/" target="_blank" rel="external">REGEXPER</a></li>
+</ul>
+<p>特別提一下REGEXPER這個網站，在Stack Overflow查正規式時，蠻多人會用這個視覺化的效果來說明他的pattern在做什麼，個人覺得是個人類比較好理解的方便工具，提高可讀性：</p>
+<img class="center" src="https://dl.dropboxusercontent.com/s/x8ddeulngbr7k3q/regexper.png">
+<hr>
+<h2 id="後記">後記</h2>
+<p>在面對字串處理的問題時，雖然正歸表達式不見得是唯一解，但也算是多學一個想法，至少當之後看到別人寫出正規表達式時，可以遊刃有餘地說：「恩，我看得懂哦。」</p>
+<p>稍微查了一下為什麼要用正規表達式，看到一篇<a href="https://www.zhihu.com/question/25409843" target="_blank" rel="external">討論</a>，其中有一些被正規表達式荼毒的工程師們的回答，看完的感想是實務上要考慮的點還是蠻多的，也牽扯到程式碼可讀性的大問題，所以這些整理只是入門可以拿來解題，或大概看懂正規表達式在寫什麼的筆記，再深入探討效能問題就是更進階的領域了。</p>
+<p>這幾天陸續去面試時，也常被問到「ES6的promise」與「javascript比其他語言更有優勢的例子或特色」，可能這兩題可以直接地鑑別對javascript熟悉度吧，小弟不才當下只拿出最近看比較多的RegExp回答，被反問「這個在資工系的正規語言應該有學過吧」，想想總不能回答我大學學藝不精吧X)，體質不佳只好慢慢補洞，之後就來寫寫promise的文章好了。</p>
+<hr>
+<h2 id="系列文章">系列文章</h2>
+<ul>
+<li><a href="https://dezchuang.github.io/2017/07/05/022_regexp_1/">筆記｜Javascript正規表達式#1 - Email驗證</a></li>
+<li><a href="https://dezchuang.github.io/2017/07/12/023_regexp_2/">筆記｜Javascript正規表達式#2 - 基本語法</a></li>
+</ul>
+<hr>
+<h2 id="參考資料-amp-延伸閱讀">參考資料 &amp; 延伸閱讀</h2>
+<ul>
+<li>MDN - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="external">Regular Expressions</a></li>
+<li>chentsu - <a href="https://chentsu.wordpress.com/2014/03/03/javascript-%E6%AD%A3%E8%A6%8F%E8%A1%A8%E9%81%94%E5%BC%8F-regexp-%E5%AF%AB%E6%B3%95/" target="_blank" rel="external">JavaScript: 正規表達式 RegExp 寫法</a></li>
+<li>chentsu - <a href="https://chentsu.wordpress.com/2014/03/04/javascript-%E6%AD%A3%E8%A6%8F%E8%A1%A8%E9%81%94%E5%BC%8F-regexp-%E6%87%89%E7%94%A8%EF%BC%88string-regexp-method%EF%BC%89/" target="_blank" rel="external">JavaScript: 正規表達式 RegExp 應用（String, RegExp Method)</a></li>
+<li>divaka - <a href="https://docs.google.com/document/d/1bUq0Jb1mLM7zmcVjDyLIX6UTLWGbKp-d99-w4rMrjvg/edit" target="_blank" rel="external">JavaScript Reguar Expression</a></li>
+<li>syunguo - <a href="http://syunguo.blogspot.tw/2013/04/jsregular-expressions.html" target="_blank" rel="external">[JS]正規表示法(Regular expressions)</a></li>
+<li>Huli - <a href="http://huli.logdown.com/posts/192566-javascript-regular-expressions" target="_blank" rel="external">[Javascript] 正規表達式</a></li>
+<li>kdchang - <a href="http://blog.kdchang.cc/2016/06/23/javascript-data-structure-algorithm-array/" target="_blank" rel="external">用 JavaScript 學習資料結構和演算法：陣列（Array）篇</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/07/12/023_regexp_2/" data-toggle="tooltip" data-placement="top" title="筆記｜Javascript正規表達式#2 - 基本語法">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字串處理-method"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">字串處理 method</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#search"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">search</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#replace"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">replace</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#match"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">match</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#split"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">split</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#regexp-method"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">RegExp method</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#exec"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">exec</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#test"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">test</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#工具"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">工具</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">後記</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系列文章"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">系列文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料-amp-延伸閱讀"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">參考資料 & 延伸閱讀</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                          <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                        
+                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                        
+                          <a class="tag" href="/tags/#Javascript" title="Javascript">Javascript</a>
+                        
+                          <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+                        
+                          <a class="tag" href="/tags/#Regular Expression" title="Regular Expression">Regular Expression</a>
+                        
+                          <a class="tag" href="/tags/#正規表達式" title="正規表達式">正規表達式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "dezchuang";
+    var disqus_identifier = "https://dezchuang.github.io/2017/07/17/024_regexp_3/";
+    var disqus_url = "https://dezchuang.github.io/2017/07/17/024_regexp_3/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Dez Chuang 2017
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> |
+                    Redesign by Dez
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://dezchuang.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-101537986-1';
+    //var _gaDomain = 'undefined';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://dezchuang.github.io/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
