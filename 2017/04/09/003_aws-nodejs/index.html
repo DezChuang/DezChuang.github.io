@@ -88,8 +88,6 @@
                             
                               <a class="tag" href="/tags/#Node" title="Node">Node</a>
                             
-                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
-                            
                               <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
                             
                               <a class="tag" href="/tags/#EC2" title="EC2">EC2</a>
@@ -99,6 +97,8 @@
                               <a class="tag" href="/tags/#部署" title="部署">部署</a>
                             
                               <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                            
+                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
                             
                         </div>
                         <h1>筆記｜在AWS EC2部署Node.js web教學</h1>
@@ -409,7 +409,7 @@
 <li><a href="https://blog.json.tw/teaching-ten-minutes-to-quickly-build-a-free-amazon-ec2-host" target="_blank" rel="external">[教學]十分鐘快速建立Amazon EC2免費主機</a></li>
 <li><a href="http://fanli7.net/a/bianchengyuyan/C__/20130126/297941.html" target="_blank" rel="external">在Amazon EC2 上部署node.js應用</a></li>
 </ul>
-<h2 id="54補充">5/4補充</h2>
+<h2 id="20170504補充">2017/05/04補充</h2>
 <p>今天突然收到AWS寄Bill給我，其中有兩項被收費：</p>
 <ul>
 <li>
@@ -421,6 +421,8 @@
 參考<a href="http://stackoverflow.com/questions/12913278/keeping-ec2-free-instances-free" target="_blank" rel="external">這篇</a>，原來是有多申請一個閒置的靜態IP，結果忘了release，就被白白收費了！</p>
 </li>
 </ul>
+<h2 id="20170903更新">2017/09/03更新</h2>
+<p>將AWS EC2暫時關閉，剩下<a href="http://deztwblog.herokuapp.com/" target="_blank" rel="external">Heroku</a>。</p>
 
                 
 
@@ -464,7 +466,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aws-ec2部署"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">AWS EC2部署</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#註冊與launch-instance"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">註冊與Launch Instance</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ip綁定與登入主機"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">IP綁定與登入主機</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在主機上設定nodejs環境"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">在主機上設定Node.js環境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#開始運作nodejs網頁應用"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">開始運作Node.js網頁應用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#troubleshooting"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Troubleshooting</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">後記</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#references"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">References</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#54補充"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5/4補充</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#aws-ec2部署"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">AWS EC2部署</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#註冊與launch-instance"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">註冊與Launch Instance</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ip綁定與登入主機"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">IP綁定與登入主機</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在主機上設定nodejs環境"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">在主機上設定Node.js環境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#開始運作nodejs網頁應用"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">開始運作Node.js網頁應用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#troubleshooting"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Troubleshooting</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">後記</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#references"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">References</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#20170504補充"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">2017/05/04補充</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#20170903更新"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">2017/09/03更新</span></a></li></ol>
         
         </div>
       </aside>
@@ -486,8 +488,6 @@
                        
                           <a class="tag" href="/tags/#Node" title="Node">Node</a>
                         
-                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
-                        
                           <a class="tag" href="/tags/#AWS" title="AWS">AWS</a>
                         
                           <a class="tag" href="/tags/#EC2" title="EC2">EC2</a>
@@ -497,6 +497,8 @@
                           <a class="tag" href="/tags/#部署" title="部署">部署</a>
                         
                           <a class="tag" href="/tags/#教學" title="教學">教學</a>
+                        
+                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
                         
                     </div>
                 </section>

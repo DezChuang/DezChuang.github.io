@@ -222,7 +222,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>首先先附上成果： <a href="http://52.197.26.179/" target="_blank" rel="external">http://52.197.26.179/</a>，這是還沒買網域的AWS EC2網址，請安心前往。</p>
+                <p>首先先附上成果： <a href="http://deztwblog.herokuapp.com/" target="_blank" rel="external">http://deztwblog.herokuapp.com/</a>。</p>
 <br>
 <h2 id="前言">前言</h2>
 <p>由於一直想架一個部落格，雖然辦了logdown還是覺得手癢，趁著最近需要弄些作品集，決定把之前在Udemy的<a href="https://www.udemy.com/the-web-developer-bootcamp/" target="_blank" rel="external">The Web Developer Bootcamp</a>課程中，還未完成的「YelpCamp實作」學完，並剛好利用這個版型，自己重構成專屬的部落格。</p>
@@ -259,19 +259,16 @@
 <br></p>
 <h2 id="部署選擇">部署選擇</h2>
 <p>關於部署(Deploy)平台有兩個選擇，之前放demo作品的Heroku與從頭自己來的AWS EC2，稍微研究了一下Heroku的收費方案，如果用免費的package，每次要開啟網站時還得先等一段叫醒server的時間，整個UX可能沒那麼好。於是這兩天我一直在玩AWS EC2的部署，意外地沒那麼難，不過也是零零散散搜集了一些2010~2014年間「EC2 nodejs deploy」之類的文章才終於架好，實在有必要在<a href="http://dez.logdown.com/posts/2017/04/07/aws-ec2-deploy-nodejs-web-app" target="_blank" rel="external">筆記一篇</a>2017年版的，供未來健忘的我與入門的人們做參考。</p>
-<p>目前部署的成果有以下兩個：</p>
-<ul>
-<li>Heroku: <a href="http://deztwblog.herokuapp.com/" target="_blank" rel="external">http://deztwblog.herokuapp.com/</a></li>
-<li>AWS EC2: <a href="http://52.197.26.179/" target="_blank" rel="external">http://52.197.26.179/</a></li>
-</ul>
-<p>之後打算再去買個網域與更換比較好用的資料庫方案，目前是暫時使用<a href="https://mlab.com/" target="_blank" rel="external">mLab</a>的免費方案，之後打算來研究AWS S3與DynamoDB，或是尋找一個比較好的MongoDB部署平台，從這邊開始感受到全端一條龍兩頭燒的感覺啊…<br>
-<br></p>
+<p>之後打算再去買個網域與更換比較好用的資料庫方案，目前是暫時使用<a href="https://mlab.com/" target="_blank" rel="external">mLab</a>的免費方案，之後打算來研究AWS S3與DynamoDB，或是尋找一個比較好的MongoDB部署平台，從這邊開始感受到全端一條龍兩頭燒的感覺啊…</p>
+<br>
 <h2 id="後記">後記</h2>
 <p>或許這個看似陽春的部落格並不難做，可以套套版型不用幾天就能完成，但想想我也是從頭到尾用sublime刻出來的，容我稱呼自己為「那個造輪子的魔術師」吧！</p>
 <p>最近後端玩得太久了，差不多該開始把當初還沒看完的React再起爐灶，之後會趁著想玩點新東西時把「暫時不做的功能」補完，也有打算利用這個部落格為模板，做為我練習React的作品，如果可以做成SPA、ajax應該會很酷。</p>
 <p>目前需要再補上React Router、Flux、Redux、ImmutableJS、Isomorphic等等的技能，之後可能就會開始多一些討論React相關的文章了！</p>
-<h3 id="apr-13th更新">Apr. 13th更新</h3>
+<h2 id="20170413更新">2017/04/13更新</h2>
 <p>還可以再利用Gulp來優化網站，<a href="http://ithelp.ithome.com.tw/articles/10185976" target="_blank" rel="external">參考文章</a>。</p>
+<h2 id="20170903更新">2017/09/03更新</h2>
+<p>將AWS EC2暫時關閉，剩下<a href="http://deztwblog.herokuapp.com/" target="_blank" rel="external">Heroku</a>。</p>
 <br>
 <h2 id="reference">Reference</h2>
 <ul>
@@ -322,7 +319,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模仿與重構"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">模仿與重構</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1歡迎頁"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">(1)歡迎頁</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2文章列表"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">(2)文章列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3文章與評論"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">(3)文章與評論</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#部署選擇"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">部署選擇</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">後記</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#apr-13th更新"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Apr. 13th更新</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Reference</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#前言"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模仿與重構"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">模仿與重構</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1歡迎頁"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">(1)歡迎頁</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2文章列表"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">(2)文章列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3文章與評論"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">(3)文章與評論</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#部署選擇"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">部署選擇</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">後記</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#20170413更新"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">2017/04/13更新</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#20170903更新"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">2017/09/03更新</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Reference</span></a></li></ol>
         
         </div>
       </aside>
