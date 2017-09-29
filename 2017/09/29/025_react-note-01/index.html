@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="Dez">
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          筆記｜React學習筆記#1 - 簡單談Flux的由來 - Dez.tw
+        
+    </title>
+
+    <link rel="canonical" href="https://dezchuang.github.io/2017/09/29/025_react-note-01/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('../../../../img/header_img/bg.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                            
+                              <a class="tag" href="/tags/#初學" title="初學">初學</a>
+                            
+                              <a class="tag" href="/tags/#React" title="React">React</a>
+                            
+                              <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                            
+                              <a class="tag" href="/tags/#Flux" title="Flux">Flux</a>
+                            
+                        </div>
+                        <h1>筆記｜React學習筆記#1 - 簡單談Flux的由來</h1>
+                        <h2 class="subheading">由於最近需要開發Flux架構的專案，所以就把最近看的一些資料整理的筆記也整理在blog。</h2>
+                        <span class="meta">
+                            Posted by Dez Chuang on
+                            2017-09-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Dez.tw</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="什麼是flux">什麼是Flux?</h2>
+<p>簡單說Flux是一種架構大型網站應用的「架構模式」，通常是在開發React應用時可選擇套用。</p>
+<p>根據Facebook的<a href="https://facebook.github.io/flux/docs/in-depth-overview.html" target="_blank" rel="external">Flux官方文件</a>定義：</p>
+<blockquote>
+<p>Flux is the application architecture that Facebook uses for building client-side web applications. It complements React’s composable view components by utilizing a <code>unidirectional data flow</code>. It’s more of a <code>pattern</code> rather than a formal framework.</p>
+</blockquote>
+<p>可以知道Flux並不是React的一個新功能，而是為了要開發React大型應用的一種「架構模式」，用來幫忙處理component之間的資料流動方式，並有規範地管理state。</p>
+<hr>
+<h2 id="為什麼flux會出現">為什麼Flux會出現？</h2>
+<p>簡單說是為了讓開發React應用時，能遵從「單向資料流」的架構，讓開發者在處理 「Data model」 與 「View components」 之間的關係更為容易管理與維護。</p>
+<p>這邊舉個最簡單的例子比較有感覺，新手如我早期初學了jQuery時，常直覺地需要什麼功能就直接操作DOM元件並塞資料硬做，後來初學React時，也是需要什麼情境就一直在component裡塞state與onXXXChange，這樣的開發模式可能寫寫To-Do List還好，但當參與實務開發時，網站的複雜程度與共同開發規範就應避免讓component自己處理資料，不然最後整包code大概會長成一個怪物，然後也沒人看得懂在寫什麼。</p>
+<p>所以一方面為了規範設計模式，一方面也為了解決資料與視圖間互動的方式，所以出現了Flux的架構。而常會在React/Flux/Redux相關的教學中，看到「單向資料流」這個特性，那這個資料流到底這是什麼東西呢？</p>
+<hr>
+<h2 id="資料流data-flow">資料流(Data flow)</h2>
+<p>根據Facebook的<a href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank" rel="external">React官方文件</a>提到：</p>
+<blockquote>
+<p>React’s one-way data flow (also called one-way binding) keeps everything modular and fast.</p>
+</blockquote>
+<p>Data flow，也可以稱為data binding，指的是「Data model」與「View components」之間的互動，描述像是資料如何存放、如何更改資料、如何通知資料更改等等。在兩者間的互動中有兩種資料的流向，因此也就有「單向資料流」與「雙向資料流」的分別。</p>
+<p>詳細探討Data flow的內容可以參考<a href="http://blog.turn.tw/?p=2948" target="_blank" rel="external">這篇</a>。</p>
+<hr>
+<h2 id="後記">後記</h2>
+<p>離上一篇網誌發文時間過了兩個多月，一方面是剛開始適應新工作，另一方面是接觸了一些實務後，總覺得有些知識還有點太粗淺，就一直沒更新網誌，但後來想想，還是可以繼續以整理筆記的方式來學習，也比較容易發現盲點在哪裡。也是真正開始接觸實務後，才對這種架構的概念比較有感覺，不然自學的內容常常深度不夠，也不知道學了要用在哪裡。</p>
+<p>由於最近需要開發Flux架構的專案，畢竟跟Redux還是有些不一樣 (然後我Redux也沒到很熟)，所以就把最近看的一些資料整理的筆記也整理在blog。此篇先稍微提一下Flux的一些概念，下一篇將會再整理「Flux架構」、「Flux的非同步API在action creator做還是store做的討論」，然後再之後會繼續學習Redux與其他React生態圈的其他技術。</p>
+<hr>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li>kdchang - <a href="https://github.com/kdchang/reactjs101/blob/master/Ch07/react-flux-introduction.md" target="_blank" rel="external">Flux 基礎概念與實戰入門</a></li>
+<li>arvinh - <a href="http://blog.techbridge.cc/2016/04/29/introduce-flux-from-flux-and-mvc/" target="_blank" rel="external">從 Flux 與 MVC 的差異來簡介 Flux</a></li>
+<li>阿川先生 - <a href="http://blog.turn.tw/?p=2948" target="_blank" rel="external">簡單聊一下 ONE-WAY DATA FLOW、TWO-WAY DATA BINDING 與前端框架</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/07/17/024_regexp_3/" data-toggle="tooltip" data-placement="top" title="筆記｜Javascript正規表達式#3 - 字串處理與應用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#什麼是flux"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">什麼是Flux?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#為什麼flux會出現"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">為什麼Flux會出現？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#資料流data-flow"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">資料流(Data flow)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#後記"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">後記</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#參考資料"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">參考資料</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                          <a class="tag" href="/tags/#初學" title="初學">初學</a>
+                        
+                          <a class="tag" href="/tags/#React" title="React">React</a>
+                        
+                          <a class="tag" href="/tags/#筆記" title="筆記">筆記</a>
+                        
+                          <a class="tag" href="/tags/#Flux" title="Flux">Flux</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "dezchuang";
+    var disqus_identifier = "https://dezchuang.github.io/2017/09/29/025_react-note-01/";
+    var disqus_url = "https://dezchuang.github.io/2017/09/29/025_react-note-01/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/DezChuang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Dez Chuang 2017
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> |
+                    Redesign by Dez
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://dezchuang.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-101537986-1';
+    //var _gaDomain = 'undefined';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<!-- <img src="https://dezchuang.github.io/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
