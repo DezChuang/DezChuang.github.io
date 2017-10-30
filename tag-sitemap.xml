@@ -37,27 +37,6 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/Ajax/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://dezchuang.github.io/tags/API/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://dezchuang.github.io/tags/jQuery/</loc>
-        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://dezchuang.github.io/tags/placeholder/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,6 +45,13 @@
 
     <url>
         <loc>https://dezchuang.github.io/tags/scroll/</loc>
+        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://dezchuang.github.io/tags/jQuery/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -86,14 +72,21 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/i18n/</loc>
+        <loc>https://dezchuang.github.io/tags/Ajax/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/Webpack/</loc>
+        <loc>https://dezchuang.github.io/tags/API/</loc>
+        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://dezchuang.github.io/tags/Gulp/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -107,7 +100,14 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/Gulp/</loc>
+        <loc>https://dezchuang.github.io/tags/i18n/</loc>
+        <lastmod>2017-07-11T04:58:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://dezchuang.github.io/tags/Webpack/</loc>
         <lastmod>2017-07-11T04:58:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -275,14 +275,14 @@
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/React/</loc>
+        <loc>https://dezchuang.github.io/tags/%E7%AD%86%E8%A8%98/</loc>
         <lastmod>2017-09-29T08:29:54.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://dezchuang.github.io/tags/%E7%AD%86%E8%A8%98/</loc>
+        <loc>https://dezchuang.github.io/tags/React/</loc>
         <lastmod>2017-09-29T08:29:54.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
