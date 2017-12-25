@@ -166,14 +166,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -257,7 +257,11 @@ null === undefined // false
 </pre></div>
 </figure>
 <h4 id="解答">解答</h4>
-<p>一開始以為是因為undefied與null的關係，不過既然JSON中並沒有undefied，那跟這就沒關係，也去看了一下twitch API，裡面的確只有null值，但還是筆記一下。綜合上述，要檢查JSON中是否有值，應該是<code>if(a.b.c === null)</code>就可以判斷。</p>
+<p>一開始以為是因為 undefied 與 null 的關係，不過既然 JSON 中並沒有 undefied ，那跟這就沒關係。</p>
+<blockquote>
+<p>感謝 aszx87410 提醒，修正解答。</p>
+</blockquote>
+<p>通常開發時會用 <code>if (a &amp;&amp; a.b &amp;&amp; a.b.c !== null)</code> 來判斷 a.b.c 是否存在，這樣做能確保每一層都存在。</p>
 <h4 id="reference">Reference</h4>
 <ul>
 <li><a href="https://dotblogs.com.tw/alantsai/2013/06/27/106134" target="_blank" rel="external">[Javascript] 等於的運用 - ==和 ===的不同之處</a></li>
